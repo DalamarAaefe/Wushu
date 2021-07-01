@@ -1,0 +1,164 @@
+[
+  {
+    "id": "manual_wushu_sword",
+    "copy-from": "book_martial",
+    "type": "GENERIC",
+    "name": { "str": "The Romance of Swords in the East" },
+    "description": "An extremely detailed manual on the techniques of Dao and Jian fighting used throughout the Romance of the Three Kingdoms..",
+    "book_data": { "martial_art": "style_wushu_sword" }
+  },
+  {
+    "id": "book_martial",
+    "type": "item_group",
+    "items": [ [ "manual_wushu_sword", 5 ] ]
+  },
+  {
+    "type": "martial_art",
+    "id": "style_wushu_sword",
+    "name": "Wu Shu Sword Mastery",
+    "description": "Mastery over oneself is only the first step, sprout ever upwards toward the Heavens!",
+    "initiate": [ "You bellow a mighty Fa Sheng and prepare for the storm", "%s screams their ferocity." ],
+    "arm_block": 1,
+    "leg_block": 4,
+	   "static_buffs": [
+      {
+        "id": "wushu_sword_static",
+        "name": "The Way of the Heavenly Sword",
+        "description": "My Sword shall cut a way to the Heavens!\n\nArmor Penetration increased by 30% of Perception\nBlocked damage reduced by 70% of Dexterity",
+        "unarmed_allowed": false,
+        "melee_allowed": true,
+        "flat_bonuses": [
+		  { "stat": "arpen", "type": "cut", "scaling-stat": "per", "scale": 0.3 },
+		  { "stat": "arpen", "type": "bash", "scaling-stat": "per", "scale": 0.3 },
+		  { "stat": "arpen", "type": "stab", "scaling-stat": "per", "scale": 0.3 },
+          { "stat": "block", "scaling-stat": "dex", "scale": 0.7 }
+        ]
+	  }
+	],
+	    "onhit_buffs": [
+      {
+        "id": "wushu_sword_hit_buff",
+        "name": "Faltering Momentum!",
+        "description": "Wind slows,\nthe Storm quiets\n\nLose 3 Speed and 0.5 Dodge skill per attack\nStacks 5 times",
+        "unarmed_allowed": false,
+        "melee_allowed": true,
+        "skill_requirements": [ { "name": "melee", "level": 1 } ],
+        "buff_duration": 1,
+        "max_stacks": 5,
+        "flat_bonuses": [
+          { "stat": "speed", "scale": -3.0 },
+		  { "stat": "dodge", "scale": -0.5 }
+        ]
+      }
+    ],
+	"onmove_buffs": [
+      {
+        "id": "buff_wushu_sword_onmove",
+        "name": "Swift Like Wind!",
+        "description": "Faster, lead the way to the Heavens!\n\n3 Speed per Stack.\n5 Stacks Max \n lasts 3 turns.",
+        "unarmed_allowed": false,
+        "melee_allowed": true,
+        "skill_requirements": [ { "name": "melee", "level": 1 } ],
+        "buff_duration": 2,
+        "max_stacks": 3,
+        "flat_bonuses": [
+          { "stat": "speed", "scale": 5.0 }
+		 ]
+      }
+    ],
+	"onpause_buffs": [
+      {
+        "id": "wushu_sword_onpause",
+        "name": "Gathering Gale",
+        "description": "Even rooted trees\nSprout ever toward the Heavens.\n\n2 Dodge, Move Cost Reduction based on Dexterity.\nLasts 2 turns.",
+        "skill_requirements": [ { "name": "melee", "level": 2 } ],
+        "melee_allowed": true,
+		"unarmed_allowed": false,
+        "buff_duration": 3,
+        "flat_bonuses": [ { "stat": "dodge", "scale": 2.0 },
+		                  { "stat": "movecost", "scaling-stat": "dex", "scale": -1.0 }
+		]
+      }
+    ],
+    "techniques": [ "tec_wushu_sword_wind", "tec_wushu_dancing_dragon", "tec_wushu_sword_rush", "tec_wushu_break", "tec_wushu_sword_hunting_gale" ],
+    "weapons": [
+      "jian",
+      "jaded_jian",
+      "dao",
+      "steel_dao",
+	  "dao_plus_one",
+	  "dao_plus_two",
+	  "jian_plus_one",
+	  "jian_plus_two",
+	  "swords_of_liu",
+	  "sword_of_cao",
+	  "paired_jian"
+    ]
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_sword_wind",
+    "name": "Wind Becomes Lightning",
+    "skill_requirements": [ { "name": "melee", "level": 2 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"crit_ok": true,
+    "mult_bonuses": [ { "stat": "damage", "type": "bash", "scale": 1.2 },
+                      { "stat": "damage", "type": "cut", "scale": 1 }],
+    "messages": [ "You swing the flat of your blade at the %s staggering it!", "<npcname> stabs %s!" ],
+    "knockback_dist": 1
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_dancing_dragon",
+    "name": "Dancing Dragon",
+    "messages": [ "You dance past %s striking them with a broad slash!", "<npcname> dances past %s before slicing them!" ],
+    "skill_requirements": [ { "name": "melee", "level": 3 } ],
+    "melee_allowed": true,
+    "crit_ok": true,
+	"mult_bonuses": [ { "stat": "damage", "type": "bash", "scale": 1 },
+					  { "stat": "damage", "type": "cut", "scale": 1.2 } ]
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_sword_rush",
+    "name": "Heavenly Rush",
+    "skill_requirements": [ { "name": "melee", "level": 4 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"crit_tec": true,
+    "mult_bonuses": [ { "stat": "movecost", "scale": 0.8 },
+                      { "stat": "damage", "type": "bash", "scale": 1.5 },
+					  { "stat": "damage", "type": "cut", "scale": 1.5 },
+					  { "stat": "damage", "type": "stab", "scale": 1.5 }
+    ],
+    "messages": [ "You chop the %s from overhead knocking them to the ground!", "<npcname> strikes very quickly knocking the %s down!" ],
+    "down_dur": 2
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_break",
+    "name": "Grab Break",
+    "messages": [ "The %s tries to grab you, but you're too fast!", "The %s tries to grab <npcname>, but they're too fast!" ],
+    "skill_requirements": [ { "name": "melee", "level": 3 } ],
+    "unarmed_allowed": false,
+	"melee_allowed": true,
+    "defensive": true,
+    "grab_break": true
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_sword_hunting_gale",
+    "name": "Hunting Gale!",
+    "skill_requirements": [ { "name": "melee", "level": 4 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"downed_target": true,
+	"weighting": 2,
+    "mult_bonuses": [
+      { "stat": "damage", "type": "bash", "scale": 1.2 },
+      { "stat": "damage", "type": "cut", "scale": 1.2 }
+    ],
+    "messages": [ "You speed toward the downed %s striking it from above!", "<npcname> strikes the downed %s" ]
+    }
+	]
