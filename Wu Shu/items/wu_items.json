@@ -555,19 +555,20 @@
     "copy-from": "scabbard_embroidered",
     "type": "TOOL",
 	"description": "This scabbard is colored an exquisite green, representing the Shu. Along it's length is woven gold embroidery depicting parting clouds and the Liu dynasty riding on flying horses toward it. Several dragons circle overhead.",
-    "name": { "str": "Liu Bei's Scabbard" },
+    "name": { "str": "scabbard of liu bei" },
 	"flags": [ "WAIST", "OVERSIZE", "WATERPROOF", "FANCY", "STURDY" ],
 	"pocket_data": [
       {
         "magazine_well": "1250 ml",
         "max_contains_volume": "2 L",
-        "max_contains_weight": "0 kg",
+        "max_contains_weight": "4 kg",
         "max_item_length": "100 cm",
         "holster": true,
-        "moves": 0,
+        "moves": 30,
         "flag_restriction": [ "SHEATH_SWORD" ]
       }
     ],
+	 "use_action": { "type": "holster", "holster_prompt": "Sheath sword", "holster_msg": "You sheath your %s" },
 	"relic_data": { "passive_effects": [ { "has": "WORN", "condition": "ALWAYS", "values": [ { "value": "DEXTERITY", "add": 2 } ] } ] }
   },
   {
