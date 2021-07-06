@@ -121,7 +121,7 @@
     "type": "TOOL",
 	"description": "This is a matched pair of jians. These have reduced guards and pommels for increased speed and flexibility of use.",
     "name": { "str": "paired jians" },
-	"longest_side": "90 cm"
+	"longest_side": "90 cm",
 	"techniques": [ "WBLOCK_1", "SWORD_BASH", "IMPALE" ],
 	"weight": "1500 g",
     "bashing": 13,
@@ -235,6 +235,7 @@
   {
     "copy-from": "armor_lamellar",
     "id": "armor_lamellar",
+	"name": { "str": "lamellar cuirass" },
     "type": "ARMOR",
     "looks_like": "vest_leather",
     "covers": [ "torso" ],
