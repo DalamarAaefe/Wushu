@@ -76,7 +76,7 @@
     "techniques": [ "WBLOCK_2" ],
     "weight": "1400 g",
     "volume": "1 L",
-    "longest_side": "38 cm",
+    "longest_side": "76 cm",
     "bashing": 18,
     "cutting": 36,
     "to_hit": 0,
@@ -121,6 +121,7 @@
     "type": "TOOL",
 	"description": "This is a matched pair of jians. These have reduced guards and pommels for increased speed and flexibility of use.",
     "name": { "str": "paired jians" },
+	"longest_side": "90 cm"
 	"techniques": [ "WBLOCK_1", "SWORD_BASH", "IMPALE" ],
 	"weight": "1500 g",
     "bashing": 13,
@@ -226,9 +227,21 @@
     "color": "brown",
     "covers": [ "torso" ],
     "coverage": 100,
-    "encumbrance": 25,
+    "encumbrance": 15,
     "warmth": 20,
     "material_thickness": 6,
+    "flags": [ "VARSIZE", "STURDY" ]
+  },
+  {
+    "copy-from": "armor_lamellar",
+    "id": "armor_lamellar",
+    "type": "ARMOR",
+    "looks_like": "vest_leather",
+    "covers": [ "torso" ],
+    "coverage": 100,
+    "encumbrance": 10,
+    "warmth": 15,
+    "material_thickness": 8,
     "flags": [ "VARSIZE", "STURDY" ]
   },
   {
@@ -271,7 +284,7 @@
     "color": "brown",
     "covers": [ "torso" ],
     "coverage": 100,
-    "encumbrance": 28,
+    "encumbrance": 20,
     "warmth": 20,
     "material_thickness": 6,
     "flags": [ "VARSIZE", "STURDY", "FANCY" ]
@@ -347,6 +360,29 @@
     "material_thickness": 5,
     "techniques": [ "WBLOCK_1" ],
     "flags": [ "VARSIZE", "STURDY", "WATERPROOF", "FANCY" ]
+  },
+    {
+    "id": "lamellar_skirt",
+    "type": "ARMOR",
+    "category": "armor",
+    "name": { "str": "steel lamellar skirt" },
+    "description": "a skirt of lamellar thick to the knees in steel strips, below that hangs a red fabric.",
+    "weight": "1300 g",
+    "volume": "5000 ml",
+    "price": 25000,
+    "price_postapoc": 750,
+    "to_hit": 1,
+    "material": [ "leather", "cotton", "steel" ],
+    "symbol": "[",
+    "looks_like": "legguard_hard",
+    "color": "green",
+    "covers": [ "leg_l", "leg_r" ],
+    "coverage": 80,
+    "encumbrance": 15,
+    "warmth": 10,
+    "material_thickness": 5,
+    "environmental_protection": 3,
+    "flags": [ "STURDY", "BELTED", "BLOCK_WHILE_WORN", "WATER_FRIENDLY", "OUTER" ]
   },
     {
     "id": "wushu_waterskin3",
@@ -484,8 +520,8 @@
     "id": "bracers_of_lubu",
     "type": "TOOL_ARMOR",
     "category": "armor",
-    "name": { "str": "The Bracers of Lu Bu" },
-    "description": "Intricate embroidery representing shifting tigers and swirling dragons surround these bracers, in the center of each a red jewel is affixed and from it an omnious aura leaks and oozes.",
+    "name": { "str": "The Bracer of Lu Bu" },
+    "description": "Intricate embroidery representing shifting tigers and swirling dragons surround this bracer, in the center of it is a red jewel, an omnious aura oozes from it.",
     "weight": "1520 g",
     "volume": "2500 ml",
     "price": 20000,
@@ -494,7 +530,8 @@
     "symbol": "[",
     "color": "light_gray",
     "covers": [ "arm_l", "arm_r" ],
-    "coverage": 45,
+	 "sided": true,
+    "coverage": 65,
     "encumbrance": 10,
     "warmth": 10,
 	"relic_data": { "passive_effects": [ { "has": "WORN", "condition": "ALWAYS", "values": [ { "value": "STRENGTH", "add": 2 } ] } ] },
@@ -557,7 +594,7 @@
     "to_hit": 1,
     "material": [ "ceramic" ],
     "symbol": ")",
-	    "relic_data": { "charge_info": { "recharge_type": "periodic", "time": "30 m", "regenerate_ammo": true } },
+	    "relic_data": { "charge_info": { "recharge_type": "periodic", "time": "1 h", "regenerate_ammo": true } },
     "use_action": {
       "target": "herbal_tea",
       "msg": "You look inside the cup and find it is full of your favorite tea.",
@@ -607,7 +644,7 @@
       "type": "transform"
     },
     "pocket_data": [ { "ammo_restriction": { "bolt": 20 }, "moves": 20 } ],
-    "flags": [ "WAIST", "OVERSIZE", "WATER_FRIENDLY", "FANCY" ]
+    "flags": [ "WAIST", "OVERSIZE", "WATER_FRIENDLY", "STURDY", "FANCY" ]
   },
    {
     "type": "AMMO",
