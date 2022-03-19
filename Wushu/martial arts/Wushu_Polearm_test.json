@@ -1,0 +1,201 @@
+[
+  {
+    "id": "manual_wushu_polearm",
+    "copy-from": "book_martial",
+    "type": "GENERIC",
+    "name": { "str": "The Romance of Polearms in the East" },
+    "description": "An extremely detailed manual on the techniques of polearm fighting used throughout the Romance of the Three Kingdoms..",
+    "book_data": { "martial_art": "style_wushu_polearm" }
+  },
+  {
+    "id": "book_martial",
+    "type": "item_group",
+    "items": [ [ "manual_wushu_polearm", 5 ] ]
+  },
+  {
+    "type": "martial_art",
+    "id": "style_wushu_polearm",
+    "name": "Wu Shu Polearms Mastery",
+    "description": "Strength and Perception are a warrior's best tools!",
+    "initiate": [ "You bellow a mighty Fa Sheng and prepare for the storm", "%s screams their ferocity." ],
+    "arm_block": 1,
+    "leg_block": 8,
+	   "static_buffs": [
+      {
+        "id": "wushu_polearm_static",
+        "name": "Invincible to the Odds",
+        "description": "You may come and face me\nTo the death!\n\n gain 1 armor, blocked damage reduced by 50% of Strength",
+        "unarmed_allowed": false,
+        "melee_allowed": true,
+        "flat_bonuses": [
+          { "stat": "armor", "type": "bash", "scale": 1.0 },
+		  { "stat": "armor", "type": "cut", "scale": 1.0 },
+		  { "stat": "armor", "type": "stab", "scale": 1.0 },
+          { "stat": "block", "scaling-stat": "str", "scale": 0.5 }
+        ]
+	  }
+	],
+	    "onhit_buffs": [
+      {
+        "id": "wushu_polearm_hit_buff",
+        "name": "Why Even Try!",
+        "description": "These FOOLS!\nWhy even bother trying to fight ME\n\nGain 2 damage per stack\nand 10% of your perception is converted into armor penetration each hit\nup to 5 stacks",
+        "unarmed_allowed": false,
+        "melee_allowed": true,
+        "skill_requirements": [ { "name": "melee", "level": 1 } ],
+        "buff_duration": 4,
+        "max_stacks": 5,
+        "flat_bonuses": [
+          { "stat": "damage", "type": "bash", "scale": 2 },
+		  { "stat": "damage", "type": "cut", "scale": 2 },
+		  { "stat": "damage", "type": "stab", "scale": 2 },
+		  { "stat": "arpen", "type": "bash", "scaling-stat": "per", "scale": 0.1 },
+		  { "stat": "arpen", "type": "cut", "scaling-stat": "per", "scale": 0.1 },
+		  { "stat": "arpen", "type": "stab", "scaling-stat": "per", "scale": 0.1 }
+        ]
+      }
+    ],
+	"onmove_buffs": [
+      {
+        "id": "wushu_polearm_onmove",
+        "name": "Incalculable Advance",
+        "description": "Now we can have some fun!\n\n1 Accuracy per stack.\n2 Stacks Max \n lasts 2 turns.",
+        "unarmed_allowed": false,
+        "melee_allowed": true,
+        "skill_requirements": [ { "name": "melee", "level": 1 } ],
+        "buff_duration": 2,
+        "max_stacks": 2,
+        "flat_bonuses": [
+          { "stat": "hit", "scale": 1 }
+		 ]
+      }
+    ],
+	"onpause_buffs": [
+      {
+        "id": "wushu_polearm_onpause",
+        "name": "Growing Bored",
+        "description": "I will crush each and everyone of you!\n\n gain 2 armor\nblock effectiveness doubled.",
+        "skill_requirements": [ { "name": "melee", "level": 2 } ],
+        "melee_allowed": true,
+		"unarmed_allowed": false,
+        "buff_duration": 2,
+		"flat_bonuses": [ { "stat": "block_effectiveness", "scale": 2.0 },
+          { "stat": "armor", "type": "bash", "scale": 2.0 },
+		  { "stat": "armor", "type": "cut", "scale": 2.0 },
+		  { "stat": "armor", "type": "stab", "scale": 2.0 }
+		]
+      }
+	  ],
+	  "ongethit_buffs": [
+	  {
+	  "id": "wushu_polearm_ongethit",
+	  "name": "Insolent Invincibility",
+	  "description": "YOU DARE HIT ME!\nME?\n\nGain 1 armor per stack\nlasts 4 turns",
+	  "melee_allowed": true,
+	  "skill_requirements": [ { "name": "melee", "level": 2 } ],
+	  "buff_duration": 5,
+	  "max_stacks": 8,
+	  "flat_bonuses": [
+	  { "stat": "armor", "type": "bash", "scale": 1.0 },
+	  { "stat": "armor", "type": "cut", "scale": 1.0 },
+	  { "stat": "armor", "type": "stab", "scale": 1.0 }
+	  ]
+	 }
+    ],
+    "techniques": [ "tec_wushu_polearm_bitter", "tec_wushu_polearm_reeling", "tec_wushu_polearm_setting", "tec_wushu_polearm_eclipse", "tec_wushu_break" ],
+    "weapons": [
+      "guandao",
+      "ji",
+      "fang_ji",
+      "qiang",
+	  "gun_staff",
+	  "spear_of_lubu",
+	  "qiang_plus_one",
+	  "qiang_plus_two"
+    ]
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_polearm_bitter",
+    "name": "Bitter Slash",
+    "skill_requirements": [ { "name": "melee", "level": 2 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"crit_ok": true,
+    "mult_bonuses": [ { "stat": "damage", "type": "bash", "scale": 0.65 },
+                      { "stat": "damage", "type": "cut", "scale": 0.75 },
+					  { "stat": "movecost", "scale": 1.1 } ],
+					  "aoe": "wide",
+    "messages": [ "You swing in a wide arc at the %s!", "<npcname> cleaves the %s!" ]
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_polearm_reeling",
+    "name": "Reeling Hate",
+    "skill_requirements": [ { "name": "melee", "level": 5 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"crit_ok": true,
+    "mult_bonuses": [ 
+	  { "stat": "movecost", "scale": 0.8 },
+	  { "stat": "damage", "type": "bash", "scale": 0.8 },
+      { "stat": "damage", "type": "cut", "scale": 0.8 },
+	  { "stat": "damage", "type": "stab", "scale": 0.8 } ],
+    "messages": [ "You release your swing before it's apex striking the %s!.", "<npcname> Reels with hatred at the %s!" ]
+  },
+    {
+    "type": "technique",
+    "id": "tec_wushu_break",
+    "name": "Grab Break",
+    "messages": [ "The %s tries to grab you, but you're too powerful!", "The %s tries to grab <npcname>, but they're too powerful!" ],
+    "skill_requirements": [ { "name": "melee", "level": 3 } ],
+    "unarmed_allowed": false,
+	"melee_allowed": true,
+    "defensive": true,
+    "grab_break": true
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_polearm_fury",
+    "name": "Dawning Fury",
+    "skill_requirements": [ { "name": "melee", "level": 4 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+    "mult_bonuses": [
+	  { "stat": "movecost", "scale": 1.1 },
+	  { "stat": "damage", "type": "bash", "scale": 1.05 },
+      { "stat": "damage", "type": "cut", "scale": 1.05 },
+	  { "stat": "damage", "type": "stab", "scale": 1.05 } ],
+	  "knockback_dist": 2,
+    "messages": [ "You slam your weapon at it's apex into the %s, knocking them back!", "<npcname> slashes the %s" ]
+    },
+	 {
+    "type": "technique",
+    "id": "tec_wushu_polearm_setting",
+    "name": "Setting Sun",
+    "skill_requirements": [ { "name": "melee", "level": 2 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"crit_tec": true,
+    "mult_bonuses": [ { "stat": "damage", "type": "bash", "scale": 1.1 },
+                      { "stat": "damage", "type": "cut", "scale": 1.1 },
+					  { "stat": "movecost", "scale": 1.5 } ],
+					  "aoe": "spin",
+    "messages": [ "You swing in a wide arc at the %s!", "<npcname> cleaves the %s!" ]
+  },
+  {
+    "type": "technique",
+    "id": "tec_wushu_polearm_eclipse",
+    "name": "Eclipsing Moon",
+    "skill_requirements": [ { "name": "melee", "level": 4 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"crit_tec": true,
+	"down_dur": 2,
+    "mult_bonuses": [
+      { "stat": "damage", "type": "bash", "scale": 1.1 },
+	  { "stat": "movecost", "scale": 0.9 },
+      { "stat": "damage", "type": "cut", "scale": 1.1 } ],
+    "messages": [ "You slam your weapon at it's apex into the %s!", "<npcname> executes the %s!" ]
+    }
+	]

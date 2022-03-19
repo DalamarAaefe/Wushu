@@ -1,0 +1,48 @@
+[
+  {
+    "type": "technique",
+    "id": "STAFF_TRIP",
+    "name": "Staff Trip",
+    "melee_allowed": true,
+    "mult_bonuses": [
+      { "stat": "movecost", "scale": 0.5 },
+      { "stat": "damage", "type": "bash", "scale": 0.66 },
+      { "stat": "damage", "type": "cut", "scale": 0.66 },
+      { "stat": "damage", "type": "stab", "scale": 0.66 }
+    ],
+	"down_dur": 1,
+    "messages": ["You quickly strike and trip %s", "<npcname> quickly strikes and trips %s"], 
+    "description": "50% moves, 66% damage, down for 2 turns"
+  },
+  {
+    "type": "technique",
+    "id": "SWORD_HOOK",
+    "name": "Hook",
+    "skill_requirements": [ { "name": "melee", "level": 3 } ],
+    "melee_allowed": true,
+    "crit_tec": true,
+    "mult_bonuses": [ { "stat": "movecost", "scale": 0.9 },
+	  { "stat": "damage", "type": "bash", "scale": 1.3 },
+      { "stat": "damage", "type": "cut", "scale": 0 }
+    ],
+	    "stun_dur": 1,
+	    "down_dur":1,
+    "messages": ["You bash %s's top half with the curve of your sword, wrapping them up and tripping them",  "<npcname> strikes and trips %s"],
+    "description": "90% moves, 130% bash damage, zero cut damage, stun and down for 1 turn."
+  },
+  {
+    "type": "technique",
+    "id": "SWORD_BASH",
+    "name": "Bash",
+    "skill_requirements": [ { "name": "melee", "level": 4 } ],
+    "melee_allowed": true,
+    "crit_tec": true,
+    "mult_bonuses": [ { "stat": "movecost", "scale": 0.7 },
+	  { "stat": "damage", "type": "bash", "scale": 1.2 },
+      { "stat": "damage", "type": "cut", "scale": 0 }
+    ],
+	    "stun_dur": 1,
+    "messages": ["You bash %s in the face stunning them",  "<npcname> strikes and stuns %s"],
+    "description": "70% moves, 120% bash damage, 0 cut damage, stuns for one turn."
+  }
+  ]

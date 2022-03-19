@@ -1,0 +1,130 @@
+[
+{
+    "type": "martial_art",
+    "id": "style_wushu_sword",
+    "name": { "str": "The Way of the Sword" },
+    "description": "The noble art of Wu Shu, this art involves the sword.",
+    "initiate": [ "You bellow a mighty Fa Sheng!", "%s bellows their fury and grips their sword tightly.." ],
+    "learn_difficulty": 5,
+    "primary_skill": "cutting",
+    "strictly_melee": true,
+    "static_buffs": [
+      {
+        "id": "wushu_sword_static",
+        "name": "Gentleman's Stance",
+        "description": "An open stance with high pride.\n\nBlocked damage reduced by 30% of Dexterity, Armor penetration increased by 60% of Perception",
+        "melee_allowed": true,
+        "flat_bonuses": [
+		  { "stat": "arpen", "type": "cut", "scaling-stat": "per", "scale": 0.6 },
+		  { "stat": "arpen", "type": "bash", "scaling-stat": "per", "scale": 0.6 },
+		  { "stat": "arpen", "type": "stab", "scaling-stat": "per", "scale": 0.6 },
+          { "stat": "block", "scaling-stat": "dex", "scale": 0.3 }
+        ]
+      }
+    ],
+    "onblock_buffs": [
+      {
+        "id": "wushu_sword_block",
+        "name": "Gentleman's Stride",
+        "description": "Your resolve quickens, your reactions are much faster.\n\n+5 Speed.\nLasts 5 turns.",
+        "skill_requirements": [ { "name": "melee", "level": 1 } ],
+        "melee_allowed": true,
+        "buff_duration": 5,
+		"max_stacks": 3,
+        "flat_bonuses": [ { "stat": "speed", "scale": 5.0 } ]
+      }
+    ],
+    "onmiss_buffs": [
+      {
+        "id": "wushu_sword_miss",
+        "name": "Pride Breaker",
+        "description": "I missed?! This cannot be!\n\n-1 accuracy and dodge. Lasts 2 turns.",
+        "skill_requirements": [ { "name": "melee", "level": 1 } ],
+        "melee_allowed": true,
+        "buff_duration": 2,
+        "flat_bonuses": [ { "stat": "hit", "scale": -1.0 }, { "stat": "dodge", "scale": -1.0 } ]
+      }
+    ],
+    "onpause_buffs": [
+      {
+        "id": "wushu_sword_pause",
+        "name": "Gentleman's Poise",
+        "description": "Come forth, so that all may see my Heavenly Glory!\n\n -5% movecost stacks 3 times. Lasts 2 turns.",
+        "melee_allowed": true,
+        "skill_requirements": [ { "name": "melee", "level": 4 } ],
+        "buff_duration": 2,
+		"max_stacks": 3,
+		"mult_bonuses": [ { "stat": "movecost", "scale": 0.95 } ]
+      }
+    ],
+    "techniques": [ "wushu_sword_feint", "wushu_sword_anger", "tec_wushu_sword_rush", "tec_wushu_sword_wind", "wushu_sword_lightning" ],
+    "weapon_category": [ "CHINESE_SWORDS" ]
+	},
+	{
+    "type": "technique",
+    "id": "tec_wushu_sword_wind",
+    "name": "Wind Becomes Lightning",
+    "skill_requirements": [ { "name": "melee", "level": 4 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"crit_ok": true,
+    "mult_bonuses": [ { "stat": "damage", "type": "bash", "scale": 0.5 },
+                      { "stat": "damage", "type": "cut", "scale": 1.05 } ],
+    "messages": [ "You swing with a divine speed at the %s slicing it!", "<npcname> slashes at %s incredibly fast!" ]
+  },
+    {
+    "type": "technique",
+    "id": "tec_wushu_sword_rush",
+    "name": "Heavenly Rush",
+    "skill_requirements": [ { "name": "melee", "level": 2 } ],
+    "unarmed_allowed": false,
+    "melee_allowed": true,
+	"crit_ok": true,
+    "mult_bonuses": [ { "stat": "movecost", "scale": 0.9 },
+                      { "stat": "damage", "type": "bash", "scale": 0.5 },
+					  { "stat": "damage", "type": "cut", "scale": 0.65 }
+    ],
+    "messages": [ "You slash the %s with a flurry of blows!", "<npcname> strikes with a flurry of blows at the %s!" ]
+  },
+   {
+    "type": "technique",
+    "id": "wushu_sword_feint",
+    "messages": [ "You turn your blade around and prepare to strike again at %s!", "<npcname> prepares another strike against %s!" ],
+    "name": "Feint",
+    "skill_requirements": [ { "name": "melee", "level": 6 } ],
+    "melee_allowed": true,
+    "defensive": true,
+    "miss_recovery": true
+  },
+    {
+    "type": "technique",
+    "id": "wushu_sword_anger",
+    "name": "Broken Composure",
+    "messages": [ "Your damaged pride leaves %s broken from a mighty swing!", "<npcname> strikes firmly against the %s!" ],
+    "skill_requirements": [ { "name": "melee", "level": 6 } ],
+    "melee_allowed": true,
+    "required_buffs_all": [ "wushu_sword_miss" ],
+    "weighting": 4,
+    "crit_ok": true,
+    "mult_bonuses": [
+      { "stat": "damage", "type": "bash", "scale": 1.35 },
+      { "stat": "damage", "type": "cut", "scale": 1.35 }
+    ],
+	"knockback_dist": 1
+  },
+      {
+    "type": "technique",
+    "id": "wushu_sword_lightning",
+    "name": "Divine Lightning Strikes",
+    "messages": [ "You swing as fast as swift wind at %s covering it in many slashes!", "<npcname> swings as fast as the wind at %s!" ],
+    "skill_requirements": [ { "name": "melee", "level": 6 } ],
+    "melee_allowed": true,
+    "required_buffs_all": [ "wushu_sword_pause" ],
+    "weighting": 3,
+    "crit_ok": true,
+"mult_bonuses": [ { "stat": "movecost", "scale": 0.8 },
+                      { "stat": "damage", "type": "bash", "scale": 0.2 },
+					  { "stat": "damage", "type": "cut", "scale": 0.5 }
+    ]
+  }
+  ]
